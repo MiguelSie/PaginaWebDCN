@@ -1,32 +1,36 @@
-from flask import Flask
+from flask import Flask, render_template, url_for, flash, redirect
 
 app = Flask(__name__)
 
+#en las rutas se usa el redender para redirigir a una pagina html
 @app.route("/")
+
 @app.route("/inicio")
 def inicio():
-    return "Página de bienvenida - visión, misión, valores, historia"
+    return render_template("PPrincipal.html")
 
 @app.route ("/sedes")
 def sedes():
-    return ("Información de sedes y ubicaciones")
+    return render_template("sedes.html", title="Sedes") #Se pasa el html y el titulo de la pagina
 
 @app.route ("/contacto")
 def contacto():
-    return ("Información de contacto")
+    return render_template("contacto.html", title="Contacto")
 
 @app.route ("/servicios")
 def servicios():
-    return ("Servicios que ofrece la empresa")
+    return render_template("servicios.html", title="Servicios")
 
 @app.route ("/ferias")
 def ferias():
-    return ("Calendario de ferias")
+    return render_template("ferias.html", title="Ferias")
 
 @app.route ("/proveedores")
 def proveedores():
-    return ("Ingreso de proveedores para ver su calendario")
-
+    return render_template("proveedores.html", title="Proveedores")
+@app.route ("/administrador")
+def administrador():
+    return render_template("administrador.html", title="Administrador")
 
 #Aún pueden faltar rutas y definir bien las existentes. Tenemos que crear la forma de el token único de los proveedores,
 #averiguar la forma de definir calendarios en la aplicación y definir una template HTML
