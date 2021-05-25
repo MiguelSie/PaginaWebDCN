@@ -1,0 +1,133 @@
+{% extends "diseñoPrueba.html" %}
+{% block content %}
+<div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+        <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true"
+                aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg"
+                 aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
+                <rect width="100%" height="100%" fill="#777"/>
+            </svg>
+
+            <div class="container">
+                <div class="carousel-caption text-start">
+                    <h1>Eres proveedor?.</h1>
+                    <p>Ponte en contacto con nosotros y registrate AHORA!</p>
+                    <p><a class="btn btn-lg btn-primary" href="{{ url_for('contacto') }}">Solicitar registro</a></p>
+                </div>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg"
+                 aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
+                <rect width="100%" height="100%" fill="#777"/>
+            </svg>
+
+            <div class="container">
+                <div class="carousel-caption">
+                    <h1>Another example headline.</h1>
+                    <p>Some representative placeholder content for the second slide of the carousel.</p>
+                    <p><a class="btn btn-lg btn-primary" href="#">Learn more</a></p>
+                </div>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg"
+                 aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
+                <rect width="100%" height="100%" fill="#777"/>
+            </svg>
+
+            <div class="container">
+                <div class="carousel-caption text-end">
+                    <h1>One more for good measure.</h1>
+                    <p>Some representative placeholder content for the third slide of this carousel.</p>
+                    <p><a class="btn btn-lg btn-primary" href="#">Browse gallery</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>
+
+
+<!-- Marketing messaging and featurettes
+================================================== -->
+<!-- Wrap the rest of the page in another container to center all the content. -->
+
+<div class="container marketing">
+
+    <!-- Three columns of text below the carousel -->
+    <div class="row">
+        <div class="col-lg-4">
+            <svg class="bd-placeholder-img rounded-circle" width="140" height="140"
+                 xmlns="http://www.w3.org/2000/svg"
+                 role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice"
+                 focusable="false">
+                <title>Placeholder</title>
+                <rect width="100%" height="100%" fill="#777"/>
+                <text x="50%" y="50%" fill="#777" dy=".3em">140x140</text>
+            </svg>
+
+            <h2>Quienes somos?</h2>
+            <p>Somos una empresa líder en la distribución de medicamentos confiables, con 31 años de servicio en la
+                Costa Atlántica, atendiendo desde nuestras sucursales en las ciudades de Cartagena y Valledupar.
+                Nuestro objetivo es lograr la confianza en nuestros clientes prestando un excelente servicio de
+                forma oportuna y eficiente.</p>
+            <p><a class="btn btn-secondary" href="#">View details &raquo;</a></p>
+        </div><!-- /.col-lg-4 -->
+        <div class="col-lg-4">
+            <svg class="bd-placeholder-img rounded-circle" width="140" height="140"
+                 xmlns="http://www.w3.org/2000/svg"
+                 role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice"
+                 focusable="false">
+                <title>Placeholder</title>
+                <rect width="100%" height="100%" fill="#777"/>
+                <text x="50%" y="50%" fill="#777" dy=".3em">140x140</text>
+            </svg>
+
+            <h2>Misión</h2>
+            <p>Brindar salud a los colombianos a través de un sistema de distribución de medicamentos comerciales,
+                genéricos, hospitalarios y oncológicos eficiente y eficaz de manera eficiente, para que los
+                productos lleguen en el momento oportuno, con la calidad requerida, en el tiempo preciso y con un
+                precio adecuado, de manera que permita optimizar los beneficios de la empresa satisfaciendo a
+                plenitud y oportunamente las necesidades de los clientes.
+            </p>
+            <p><a class="btn btn-secondary" href="#">View details &raquo;</a></p>
+        </div><!-- /.col-lg-4 -->
+        <div class="col-lg-4">
+            <svg class="bd-placeholder-img rounded-circle" width="140" height="140"
+                 xmlns="http://www.w3.org/2000/svg"
+                 role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice"
+                 focusable="false">
+                <title>Placeholder</title>
+                <rect width="100%" height="100%" fill="#777"/>
+                <text x="50%" y="50%" fill="#777" dy=".3em">140x140</text>
+            </svg>
+
+            <h2>Visión</h2>
+            <p>Ser el mayor distribuidor de medicamentos comerciales, genéricos, hospitalarios y oncológicos, en
+                toda la costa atlántica colombiana, siendo reconocidos por su alta calidad en el manejo de los
+                canales Distributivo, institucional y puntos propios a través de nuestra cadena de droguerías Drogas
+                Mega Express.</p>
+            <p><a class="btn btn-secondary" href="#">View details &raquo;</a></p>
+        </div><!-- /.col-lg-4 -->
+    </div><!-- /.row -->
+
+    <div class="calendario-ferias">
+        <iframe src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=2&amp;bgcolor=%23ffffff&amp;ctz=America%2FBogota&amp;title=Calendario%20de%20ferias&amp;showTz=0&amp;showPrint=0&amp;mode=WEEK&amp;showTitle=1&amp;showTabs=1&amp;showCalendars=0&amp;src=ZXMuY28jaG9saWRheUBncm91cC52LmNhbGVuZGFyLmdvb2dsZS5jb20&amp;color=%237986CB"
+                style="border:solid 1px #777" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+    </div>
+</div>
+{% endblock content%}

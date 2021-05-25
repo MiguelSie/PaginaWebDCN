@@ -1,0 +1,69 @@
+*{
+    padding: 0%;
+    margin: 0%;
+}
+   body{
+	font-family: arial, helvetica;
+	background: #FFFFFF;
+}
+ header {
+ width: 100%;
+ padding: 0;
+  background: #3498DB ;
+  width: 100%;
+  max-width: auto;
+ }
+.menu{
+	list-style: none;
+	padding: 0;
+	background: #3498DB ;
+	width: 100%;
+	max-width: auto;
+	margin-left: 200px;
+}
+
+.menu li a{
+	text-decoration: none;
+	color: white;
+	padding: 20px;
+	display: block;
+}
+
+.menu li{
+	display: inline-block;
+	text-align: center;
+}
+
+.menu li a:hover{
+	background: #ef8354;
+}
+.contenido-central{
+    text-align: center;
+    margin-top: 20px;
+    width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+    /* El padding sirve para poner bordes de afuera hacia adentro
+    padding: 10px; */
+}
+.logo{
+  display: block;
+  margin: auto;
+  header 60px;
+  width: 300px;
+}
+.valores{
+  margin-top: 30px;
+  text-size 500px;
+}
+.form-boton{
+margin-top: 30px;
+}
+.calendario-ferias{
+text-align: center;
+margin: auto;
+}
+.content-section{
+  width: 80%;
+  margin: auto;
+}
