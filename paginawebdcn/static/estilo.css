@@ -62,8 +62,18 @@ margin-top: 30px;
 .calendario-ferias{
 text-align: center;
 margin: auto;
+margin-top: 50px;
 }
 .content-section{
+  text-align: center;
   width: 80%;
   margin: auto;
+  margin-top: 50px;
+}
+.letra-negra{
+    color: #000;
+}
+.img-circular{
+  header 140px;
+  width: 140px;
 }

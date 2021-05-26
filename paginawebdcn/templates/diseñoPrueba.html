@@ -14,6 +14,10 @@
     <!-- Bootstrap core CSS -->
     <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
 
+        <!-- Custom styles for this template -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='carousel.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='estilo.css') }}">
+
     <style>
     .bd-placeholder-img {
       font-size: 1.125rem;
@@ -27,15 +31,8 @@
       .bd-placeholder-img-lg {
         font-size: 3.5rem;
       }
-    }
-
-
     </style>
 
-
-    <!-- Custom styles for this template -->
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='carousel.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='estilo.css') }}">
     {% if title %}
     <title>DCN - {{ title }}</title>
     {% else %}
@@ -48,7 +45,7 @@
 <header>
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">Distribuidora Costa Norte</a>
+            <a class="navbar-brand" href="/">Distribuidora Costa Norte</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
                     aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -73,12 +70,21 @@
                         <a class="nav-link" href="{{ url_for('ferias') }}">Ferias</a></a>
                     </li>
                     </li>
+                    {% if current_user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('sesionProveedor') }}">Calendario de compras</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('cerrarSesion') }}">Cerrar sesion</a>
+                    </li>
+                    {% else %}
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url_for('proveedores') }}">Proveedores</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url_for('administrador') }}">Administrador</a>
                     </li>
+                    {% endif %}
                 </ul>
                 <form class="d-flex">
                     <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
@@ -111,11 +117,10 @@
         </main>
     </section>
 
-
     <!-- FOOTER -->
     <footer class="container">
         <p class="float-end"><a href="#">Volver al inicio</a></p>
-        <p>&copy; 2017–2021 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+        <p>&copy; 2017–2021 Company, Inc. &middot; <a href="#">Más información</a> &middot; <a href="#">Contacto</a></p>
     </footer>
 </main>
 
