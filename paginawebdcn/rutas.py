@@ -1,7 +1,7 @@
 from flask import render_template, url_for, flash, redirect
-from paginawebdcn.forms import RegistroProveedor, IngresoProveedor
+from paginawebdcn.forms import RegistroProveedor, IngresoProveedor, IngresoAdministrador
 from paginawebdcn import app, db, bcrypt
-from paginawebdcn.ModelosDB import Proveedor
+from paginawebdcn.ModelosDB import Proveedor, Administrador
 from flask_login import login_user, logout_user, current_user, login_required
 
 
@@ -49,9 +49,8 @@ def proveedores():
 
 
 @app.route("/administrador", methods=['GET', 'POST'])
+@login_required
 def administrador():
-    if current_user.is_authenticated:
-        return redirect(url_for('inicio'))
     formulario = RegistroProveedor()
     if formulario.validate_on_submit():
         hashed_password = bcrypt.generate_password_hash(formulario.password.data).decode('utf-8')
@@ -60,7 +59,7 @@ def administrador():
         db.session.add(proveedor)
         db.session.commit()
         flash(f' {formulario.username.data} se ha agregado exitosamente ', 'success')
-        return redirect(url_for('inicio'))
+        return redirect(url_for('administrador'))
     return render_template("administrador.html", title="Administrador", formulario=formulario)
 
 
@@ -79,3 +78,20 @@ def sesionProveedor():
 @app.route("/informacion")
 def informacion():
     return render_template("informacion.html", title="Ferias")
+
+
+@app.route("/loginAdministrador", methods=['GET', 'POST'])
+def loginAdministrador():
+    if current_user.is_authenticated:
+        return redirect(url_for('administrador'))
+    formulario = IngresoAdministrador()
+    if formulario.validate_on_submit():
+        administrador = Administrador.query.filter_by(email=formulario.email.data).first()
+        if administrador and formulario.password.data == '123':
+            login_user(administrador)
+            flash(f"Ha ingresado exitosamente ", "success")
+            return redirect(url_for("administrador"))
+        else:
+            flash(f"El token ingresado no se encuentra registrado", "danger")
+    return render_template("loginAdmi.html", title="Administrador", formulario=formulario)
+

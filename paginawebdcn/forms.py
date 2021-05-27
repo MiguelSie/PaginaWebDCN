@@ -32,3 +32,9 @@ class IngresoProveedor(FlaskForm):
     username = StringField('Ingrese el nombre de usuario ', validators=[DataRequired(), Length(min=2, max=15)])
     password = PasswordField("Ingrese el token", validators=[DataRequired()])
     submit = SubmitField("Ingresar")
+
+
+class IngresoAdministrador(FlaskForm):
+    email = StringField("Ingrese el correo", validators=[DataRequired(), Email()])
+    password = PasswordField("Ingrese la contraseña", validators=[DataRequired()])
+    submit = SubmitField("Ingresar")

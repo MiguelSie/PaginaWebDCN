@@ -14,7 +14,7 @@
     <!-- Bootstrap core CSS -->
     <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
 
-        <!-- Custom styles for this template -->
+    <!-- Custom styles for this template -->
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='carousel.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='estilo.css') }}">
 
@@ -31,6 +31,7 @@
       .bd-placeholder-img-lg {
         font-size: 3.5rem;
       }
+
     </style>
 
     {% if title %}
@@ -75,14 +76,14 @@
                         <a class="nav-link" href="{{ url_for('sesionProveedor') }}">Calendario de compras</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('cerrarSesion') }}">Cerrar sesion</a>
+                        <a class="btn btn-outline-success" href="{{ url_for('cerrarSesion') }}">Cerrar sesion</a>
                     </li>
                     {% else %}
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url_for('proveedores') }}">Proveedores</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('administrador') }}">Administrador</a>
+                        <a class="nav-link" href="{{ url_for('loginAdministrador') }}">Administrador</a>
                     </li>
                     {% endif %}
                 </ul>
