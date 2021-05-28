@@ -1,7 +1,11 @@
 {% extends "diseñoPrueba.html" %}
 {% block content %}
 <!--  -->
+
 <div class="content-section">
+    <div>
+        <h1> {{ current_user.email }}</h1>
+    </div>
     <form method="POST" action="">
         {{ formulario.hidden_tag() }}<!--esto se hace para proteger el sitio contar ciertos ataques-->
         <fieldset class="form-group">
@@ -82,5 +86,35 @@
             {{ formulario.submit( class="btn btn-outline-info") }}
         </dir>
     </form>
+
+</div>
+<div class="content-section">
+    <h2 class="sombra">Lista de proveedores</h2>
+    <div style="overflow:scroll;height:400px;width:100%;">
+        {% for proveedor in proveedores %}
+        <article class="media content-section">
+            <div class="media-body">
+                <div class="article-metadata">
+                    <h2><a class="article-title" href="#">{{ proveedor.name }}</a></h2>
+                </div>
+                <div class="article-tabla">
+                    <span class="separados_1">ID</span>
+                    <span class="separados_2">Email</span>
+                    <span class="separados_3">Nombre de usuario</span>
+                </div>
+
+            </div>
+            <div class="article-tabla">
+                <span class="separados_1">{{ proveedor.id }} </span>
+
+                <span class="separados_3">{{ proveedor.email }}</span>
+
+                <span class="separados">{{ proveedor.username }}</span>
+            </div>
+
+        </article>
+        {% endfor %}
+    </div>
+
 </div>
 {% endblock content%}

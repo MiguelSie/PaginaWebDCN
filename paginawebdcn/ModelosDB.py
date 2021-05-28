@@ -4,7 +4,10 @@ from flask_login import UserMixin
 
 @login_manager.user_loader
 def load_user(user_id):
-    return Proveedor.query.get(int(user_id))
+    if Administrador.query.get(int(user_id)):
+        return Administrador.query.get(int(user_id))
+    else:
+        return Proveedor.query.get(int(user_id))
 
 
 class Proveedor(db.Model, UserMixin):
@@ -15,7 +18,7 @@ class Proveedor(db.Model, UserMixin):
     password = db.Column(db.String(50), nullable=False)
 
     def __repr__(self):
-        return f"User('{self.username}','{self.email}')"
+        return f"Proveedor('{self.username}','{self.email}')"
 
 
 class Administrador(db.Model, UserMixin):
@@ -24,4 +27,4 @@ class Administrador(db.Model, UserMixin):
     password = db.Column(db.String(50), nullable=False)
 
     def __repr__(self):
-        return f"User('{self.email}','{self.password}')"
+        return f"Administrador('{self.email}','{self.password}')"

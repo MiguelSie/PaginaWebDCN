@@ -1,9 +1,14 @@
 {% extends "diseñoPrueba.html" %}
 {% block content %}
 <div class="content-section">
+    {% if current_user.email == admin.email %}
+    <h2> Bienvenido, Administrador </h2>
+    {% else %}
     <h2> Bienvenido, {{ current_user.name }} </h2>
+    {% endif %}
+
     <div class="calendario-ferias">
-        <iframe src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=2&amp;bgcolor=%23ffffff&amp;ctz=America%2FBogota&amp;title=Calendario%20de%20ferias&amp;showTz=0&amp;showPrint=0&amp;mode=WEEK&amp;showTitle=1&amp;showTabs=1&amp;showCalendars=0&amp;src=ZXMuY28jaG9saWRheUBncm91cC52LmNhbGVuZGFyLmdvb2dsZS5jb20&amp;color=%237986CB"
+        <iframe src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=2&amp;bgcolor=%23ffffff&amp;ctz=America%2FBogota&amp;src=MjFlczBucWY1dmM3N292OTNiN3VxamtrdDRAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;color=%23F09300&amp;showTitle=0&amp;showPrint=0&amp;title"
                 style="border:solid 1px #777" width="800" height="600" frameborder="0" scrolling="no"></iframe>
     </div>
 </div>

@@ -32,7 +32,9 @@
         font-size: 3.5rem;
       }
 
+
     </style>
+
 
     {% if title %}
     <title>DCN - {{ title }}</title>
@@ -72,12 +74,18 @@
                     </li>
                     </li>
                     {% if current_user.is_authenticated %}
+                    {% if current_user == admin %}
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url_for('sesionProveedor') }}">Calendario de compras</a>
                     </li>
                     <li class="nav-item">
-                        <a class="btn btn-outline-success" href="{{ url_for('cerrarSesion') }}">Cerrar sesion</a>
+                        <a class="nav-link" href="{{ url_for('administrador') }}">Administrador</a>
                     </li>
+                    {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('sesionProveedor') }}">Calendario de compras</a>
+                    </li>
+                    {% endif %}
                     {% else %}
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url_for('proveedores') }}">Proveedores</a>
@@ -87,10 +95,11 @@
                     </li>
                     {% endif %}
                 </ul>
+                {% if current_user.is_authenticated %}
                 <form class="d-flex">
-                    <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Buscar</button>
+                    <a class="btn btn-outline-success" href="{{ url_for('cerrarSesion') }}">Cerrar sesion</a>
                 </form>
+                {% endif %}
             </div>
         </div>
     </nav>
@@ -107,7 +116,7 @@
                 {% with messages = get_flashed_messages(with_categories=true) %}
                 {% if messages %}
                 {% for category, message in messages %}
-                <div class="alert alert-{{ category }}">
+                <div class="alert alert-{{ category }}" style="margin-bottom: 0px;">
                     {{ message }}
                 </div>
                 {% endfor %}
