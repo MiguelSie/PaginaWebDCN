@@ -89,13 +89,13 @@
 
 </div>
 <div class="content-section">
-    <h2 class="sombra">Lista de proveedores</h2>
+    <h2><a class="article-title" href="{{ url_for('LProveedores') }}">Lista de proveedores</a></h2>
     <div style="overflow:scroll;height:400px;width:100%;">
         {% for proveedor in proveedores %}
         <article class="media content-section">
             <div class="media-body">
                 <div class="article-metadata">
-                    <h2><a class="article-title" href="#">{{ proveedor.name }}</a></h2>
+                    <h2>{{ proveedor.name }}</h2>
                 </div>
                 <div class="article-tabla">
                     <span class="separados_1">ID</span>

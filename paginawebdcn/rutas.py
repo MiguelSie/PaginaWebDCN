@@ -1,5 +1,6 @@
-from flask import render_template, url_for, flash, redirect
-from paginawebdcn.forms import RegistroProveedor, IngresoProveedor, IngresoAdministrador
+from flask import render_template, url_for, flash, redirect, request, abort
+from paginawebdcn.forms import RegistroProveedor, IngresoProveedor, IngresoAdministrador, BusquedaProv, \
+    ActualizarProveedor
 from paginawebdcn import app, db, bcrypt
 from paginawebdcn.ModelosDB import Proveedor, Administrador
 from flask_login import login_user, logout_user, current_user, login_required
@@ -104,3 +105,63 @@ def loginAdministrador():
             flash(f"El token ingresado no se encuentra registrado", "danger")
     return render_template("loginAdmi.html", title="Iniciar sesion como administrador", formulario=formulario,
                            admin=admin)
+
+
+@app.route("/LProveedores", methods=['GET', 'POST'])
+@login_required
+def LProveedores():
+    if current_user.email == admin.email:
+        formularioBusqueda = BusquedaProv()
+        proveedores = Proveedor.query.all()
+        if formularioBusqueda.validate_on_submit():
+            proveedorB = Proveedor.query.filter_by(email=formularioBusqueda.email.data).first()
+            if proveedorB:
+                return redirect(url_for('proveedor', prov_id=proveedorB.id))
+            else:
+                flash(f' {formularioBusqueda.email.data} No fue encontrado ', 'danger')
+        else:
+            proveedorB = None
+        return render_template("ListaProveedores.html", title="Lista de proveedores", proveedores=proveedores,
+                               admin=admin,
+                               formularioBusqueda=formularioBusqueda, proveedorB=proveedorB)
+    else:
+        flash(f' {current_user.username} No tiene acceso a este modulo', 'danger')
+        return redirect(url_for('inicio'))
+
+
+@app.route("/proveedor/<int:prov_id>", methods=['GET', 'POST'])
+@login_required
+def proveedor(prov_id):
+    if current_user.email == admin.email:
+        proveedorB = Proveedor.query.filter_by(id=prov_id).first()
+        formularioActu = ActualizarProveedor()
+        if formularioActu.validate_on_submit():
+            proveedorB.name = formularioActu.name.data
+            proveedorB.username = formularioActu.username.data
+            proveedorB.email = formularioActu.email.data
+            db.session.commit()
+            flash('Se han actualizado los datos exitosamente', 'success')
+            return redirect(url_for('LProveedores'))
+        elif request.method == 'GET':
+            formularioActu.name.data = proveedorB.name
+            formularioActu.username.data = proveedorB.username
+            formularioActu.email.data = proveedorB.email
+        return render_template("proveedor.html", title="busqueda de proveedor", admin=admin,
+                               formularioActu=formularioActu, proveedorB=proveedorB)
+    else:
+        flash(f' {current_user.username} No tiene acceso a este modulo', 'danger')
+        return redirect(url_for('inicio'))
+
+
+@app.route("/proveedor/<int:prov_id>/borrar",  methods=['GET', 'POST'])
+@login_required
+def eliminarProv(prov_id):
+    if current_user.email == admin.email:
+        proveedor = Proveedor.query.get(prov_id)
+        db.session.delete(proveedor)
+        db.session.commit()
+        flash(f'Se ha eliminado a {proveedor.name} exitosamente de la lista', 'success')
+        return redirect(url_for('LProveedores'))
+    else:
+        flash(f' {current_user.username} No tiene acceso a este modulo', 'danger')
+        return redirect(url_for('inicio'))
