@@ -12,7 +12,7 @@ admin = Administrador.query.filter_by(id=1).first()
 @app.route("/")
 @app.route("/inicio")
 def inicio():
-    return render_template("index.html", admin=admin)
+    return render_template("PPrincipal.html", admin=admin)
 
 
 @app.route("/sedes")
@@ -20,14 +20,19 @@ def sedes():
     return render_template("sedes.html", title="Sedes", admin=admin)  # Se pasa el html y el titulo de la pagina
 
 
-@app.route("/contactos")
+@app.route("/contacto")
 def contacto():
-    return render_template("contactos.html", title="Contactos", admin=admin)
+    return render_template("contacto.html", title="Contacto", admin=admin)
 
 
 @app.route("/servicios")
 def servicios():
     return render_template("servicios.html", title="Servicios", admin=admin)
+
+
+@app.route("/ferias")
+def ferias():
+    return render_template("ferias.html", title="Ferias", admin=admin)
 
 
 @app.route("/proveedores", methods=['GET', 'POST'])
@@ -78,6 +83,11 @@ def cerrarSesion():
 @login_required
 def sesionProveedor():
     return render_template("sesionProv.html", title="Calendario de compras", admin=admin)
+
+
+@app.route("/informacion")
+def informacion():
+    return render_template("informacion.html", title="Información", admin=admin)
 
 
 @app.route("/loginAdministrador", methods=['GET', 'POST'])
@@ -143,7 +153,7 @@ def proveedor(prov_id):
         return redirect(url_for('inicio'))
 
 
-@app.route("/proveedor/<int:prov_id>/borrar", methods=['GET', 'POST'])
+@app.route("/proveedor/<int:prov_id>/borrar",  methods=['GET', 'POST'])
 @login_required
 def eliminarProv(prov_id):
     if current_user.email == admin.email:
