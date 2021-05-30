@@ -10,7 +10,7 @@ admin = Administrador.query.filter_by(id=1).first()
 
 # en las rutas se usa el redender para redirigir a una pagina html
 @app.route("/")
-@app.route("/inicio")
+@app.route("/home")
 def inicio():
     return render_template("index.html", admin=admin)
 
