@@ -1,0 +1,54 @@
+{% extends "diseñoPrueba.html" %}
+{% block content %}
+<div class="content-section">
+    <h2><a class="article-title" href="{{ url_for('LProveedores') }}">Lista de proveedores</a></h2>
+    <form class="reducido" method="POST" action="">
+        {{ formularioBusqueda.hidden_tag() }}<!--esto se hace para proteger el sitio contar ciertos ataques-->
+        <fieldset class="form-group">
+            <dir class="form-group">
+                {{ formularioBusqueda.email.label(class="form-control me-2") }}
+
+                {% if formularioBusqueda.email.errors %}<!-- Imprime los errores asociados a este campo -->
+                {{ formularioBusqueda.email(class="form-control form-control-lg is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for error in formularioBusqueda.email.errors %}
+                    <span lang="es">{{ error }}</span>
+                    {% endfor %}
+                </div>
+                {% else %}
+                {{ formularioBusqueda.email(class="form-control me-2") }}
+                {% endif %}
+            </dir>
+        </fieldset>
+        <dir class="form-boton">
+            {{ formularioBusqueda.submit( class="btn btn-outline-success") }}
+        </dir>
+    </form>
+    <div style="overflow:scroll;height:1400px;width:100%;">
+        {% for proveedor in proveedores %}
+        <article class="media content-section">
+            <div class="media-body">
+                <div class="article-metadata">
+                    <h2><a class="article-title" href="#">{{ proveedor.name }}</a></h2>
+                </div>
+                <div class="article-tabla">
+                    <span class="separados_1">ID</span>
+                    <span class="separados_2">Email</span>
+                    <span class="separados_3">Nombre de usuario</span>
+                </div>
+
+            </div>
+            <div class="article-tabla">
+                <span class="separados_1">{{ proveedor.id }} </span>
+
+                <span class="separados_3">{{ proveedor.email }}</span>
+
+                <span class="separados">{{ proveedor.username }}</span>
+            </div>
+
+        </article>
+        {% endfor %}
+    </div>
+
+</div>
+{% endblock content%}

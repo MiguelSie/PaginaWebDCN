@@ -1,0 +1,77 @@
+{% extends "diseñoPrueba.html" %}
+{% block content %}
+<article class="media content-section">
+    <form method="POST" action="">
+        {{ formularioActu.hidden_tag() }}<!--esto se hace para proteger el sitio contar ciertos ataques-->
+        <fieldset class="form-group">
+            <legend class=""> Registrar nuevo proveedor</legend>
+            <!--Los siguientes son los campos del formularioActu-->
+            <dir class="form-group">
+                {{ formularioActu.name.label(class="form-control-label") }}
+
+                {% if formularioActu.name.errors %}<!-- Imprime los errores asociados a este campo -->
+                {{ formularioActu.name(class="form-control form-control-lg is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for error in formularioActu.name.errors %}
+                    <span lang="es">{{ error }}</span>
+                    {% endfor %}
+                </div>
+                {% else %}
+                {{ formularioActu.name(class="form-control form-control-lg") }}
+                {% endif %}
+            </dir>
+            <dir class="form-group">
+                {{ formularioActu.username.label(class="form-control-label") }}
+
+                {% if formularioActu.username.errors %}<!-- Imprime los errores asociados a este campo -->
+                {{ formularioActu.username(class="form-control form-control-lg is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for error in formularioActu.username.errors %}
+                    <span lang="es">{{ error }}</span>
+                    {% endfor %}
+                </div>
+                {% else %}
+                {{ formularioActu.username(class="form-control form-control-lg") }}
+                {% endif %}
+            </dir>
+            <dir class="form-group">
+                {{ formularioActu.email.label(class="form-control-label") }}
+
+                {% if formularioActu.email.errors %}<!-- Imprime los errores asociados a este campo -->
+                {{ formularioActu.email(class="form-control form-control-lg is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for error in formularioActu.email.errors %}
+                    <span lang="es">{{ error }}</span>
+                    {% endfor %}
+                </div>
+                {% else %}
+                {{ formularioActu.email(class="form-control form-control-lg") }}
+                {% endif %}
+            </dir>
+        </fieldset>
+        <div class="col-sm-12 col-xs-12" style="margin-top: 10px;">
+            {{ formularioActu.submit( class="btn btn-outline-info") }}
+            <a class="btn btn-outline-info" href="{{ url_for('eliminarProv',prov_id=proveedorB.id) }}">Eliminar</a>
+        </div>
+    </form>
+    <div class="media-body">
+        <div class="article-metadata">
+            <h2>{{ proveedorB.name }}</h2>
+        </div>
+        <div class="article-tabla">
+            <span class="separados_1">ID</span>
+            <span class="separados_2">Email</span>
+            <span class="separados_3">Nombre de usuario</span>
+        </div>
+
+    </div>
+    <div class="article-tabla">
+        <span class="separados_1">{{ proveedorB.id }} </span>
+
+        <span class="separados_3">{{ proveedorB.email }}</span>
+
+        <span class="separados">{{ proveedorB.username }}</span>
+    </div>
+
+</article>
+{% endblock content%}

@@ -1,0 +1,120 @@
+{% extends "diseñoPrueba.html" %}
+{% block content %}
+<!--  -->
+
+<div class="content-section">
+    <div>
+        <h1> {{ current_user.email }}</h1>
+    </div>
+    <form method="POST" action="">
+        {{ formulario.hidden_tag() }}<!--esto se hace para proteger el sitio contar ciertos ataques-->
+        <fieldset class="form-group">
+            <legend class=""> Registrar nuevo proveedor</legend>
+            <!--Los siguientes son los campos del formulario-->
+            <dir class="form-group">
+                {{ formulario.name.label(class="form-control-label") }}
+
+                {% if formulario.name.errors %}<!-- Imprime los errores asociados a este campo -->
+                {{ formulario.name(class="form-control form-control-lg is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for error in formulario.name.errors %}
+                    <span lang="es">{{ error }}</span>
+                    {% endfor %}
+                </div>
+                {% else %}
+                {{ formulario.name(class="form-control form-control-lg") }}
+                {% endif %}
+            </dir>
+            <dir class="form-group">
+                {{ formulario.username.label(class="form-control-label") }}
+
+                {% if formulario.username.errors %}<!-- Imprime los errores asociados a este campo -->
+                {{ formulario.username(class="form-control form-control-lg is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for error in formulario.username.errors %}
+                    <span lang="es">{{ error }}</span>
+                    {% endfor %}
+                </div>
+                {% else %}
+                {{ formulario.username(class="form-control form-control-lg") }}
+                {% endif %}
+            </dir>
+            <dir class="form-group">
+                {{ formulario.email.label(class="form-control-label") }}
+
+                {% if formulario.email.errors %}<!-- Imprime los errores asociados a este campo -->
+                {{ formulario.email(class="form-control form-control-lg is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for error in formulario.email.errors %}
+                    <span lang="es">{{ error }}</span>
+                    {% endfor %}
+                </div>
+                {% else %}
+                {{ formulario.email(class="form-control form-control-lg") }}
+                {% endif %}
+            </dir>
+            <dir class="form-group">
+                {{ formulario.password.label(class="form-control-label") }}
+
+                {% if formulario.password.errors %}<!-- Imprime los errores asociados a este campo -->
+                {{ formulario.password(class="form-control form-control-lg is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for error in formulario.password.errors %}
+                    <span lang="es">{{ error }}</span>
+                    {% endfor %}
+                </div>
+                {% else %}
+                {{ formulario.password(class="form-control form-control-lg") }}
+                {% endif %}
+            </dir>
+            <dir class="form-group">
+                {{ formulario.confirm_password.label(class="form-control-label") }}
+
+                {% if formulario.confirm_password.errors %}<!-- Imprime los errores asociados a este campo -->
+                {{ formulario.confirm_password(class="form-control form-control-lg is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for error in formulario.confirm_password.errors %}
+                    <span lang="es">{{ error }}</span>
+                    {% endfor %}
+                </div>
+                {% else %}
+                {{ formulario.confirm_password(class="form-control form-control-lg") }}
+                {% endif %}
+            </dir>
+        </fieldset>
+        <dir class="form-boton">
+            {{ formulario.submit( class="btn btn-outline-info") }}
+        </dir>
+    </form>
+
+</div>
+<div class="content-section">
+    <h2><a class="article-title" href="{{ url_for('LProveedores') }}">Lista de proveedores</a></h2>
+    <div style="overflow:scroll;height:400px;width:100%;">
+        {% for proveedor in proveedores %}
+        <article class="media content-section">
+            <div class="media-body">
+                <div class="article-metadata">
+                    <h2>{{ proveedor.name }}</h2>
+                </div>
+                <div class="article-tabla">
+                    <span class="separados_1">ID</span>
+                    <span class="separados_2">Email</span>
+                    <span class="separados_3">Nombre de usuario</span>
+                </div>
+
+            </div>
+            <div class="article-tabla">
+                <span class="separados_1">{{ proveedor.id }} </span>
+
+                <span class="separados_3">{{ proveedor.email }}</span>
+
+                <span class="separados">{{ proveedor.username }}</span>
+            </div>
+
+        </article>
+        {% endfor %}
+    </div>
+
+</div>
+{% endblock content%}
