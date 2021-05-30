@@ -12,7 +12,7 @@ admin = Administrador.query.filter_by(id=1).first()
 @app.route("/")
 @app.route("/home")
 def inicio():
-    return render_template("index.html", admin=admin)
+    return render_template("PPrincipal.html", admin=admin)
 
 
 @app.route("/sedes")
