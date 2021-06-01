@@ -1,5 +1,6 @@
 {% extends "index.html" %}
-{% block content %}
+{% block head %}
+{% endblock %}
 <div class="content-section">
     <form method="POST" action="">
         {{ formulario.hidden_tag() }}<!--esto se hace para proteger el sitio contar ciertos ataques-->
@@ -40,4 +41,5 @@
         </dir>
     </form>
 </div>
-{% endblock content%}
+{% block footer %}
+{% endblock %}
