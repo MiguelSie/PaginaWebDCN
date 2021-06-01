@@ -227,6 +227,7 @@
 
 
 
+
     </style>
     <style class="brz-style brz-project__style-palette">.brz .brz-cp-color1, .brz .brz-bcp-color1 {color: #a170d9;}
 .brz .brz-cp-color2, .brz .brz-bcp-color2 {color: #1c1c1c;}
@@ -236,6 +237,7 @@
 .brz .brz-cp-color6, .brz .brz-bcp-color6 {color: #ebebeb;}
 .brz .brz-cp-color7, .brz .brz-bcp-color7 {color: #666;}
 .brz .brz-cp-color8, .brz .brz-bcp-color8 {color: #fff;}
+
 
 
 
@@ -286,38 +288,41 @@
                                         <div>
                                             <ul class="menu">
                                                 <li class="menu-item">
-                                                    <a href="/">Inicio</a>
+                                                    <a id="inicio" href="/home">Inicio</a>
                                                 </li>
                                                 <li class="menu-item">
-                                                    <a href="{{ url_for('sedes') }}">Sedes</a>
+                                                    <a id="sedes" href="{{ url_for('sedes') }}">Sedes</a>
                                                 </li>
                                                 <li class="menu-item">
-                                                    <a href="{{ url_for('contacto') }}">Contacto</a>
+                                                    <a id="contacto" href="{{ url_for('contacto') }}">Contacto</a>
                                                 </li>
                                                 <li class="menu-item">
-                                                    <a href="{{ url_for('servicios') }}">Servicios</a>
+                                                    <a id="servicios" href="{{ url_for('servicios') }}">Servicios</a>
                                                 </li>
                                                 {% if current_user.is_authenticated %}
                                                 {% if current_user == admin %}
                                                 <li class="menu-item">
-                                                    <a href="{{ url_for('sesionProveedor') }}">Calendario de
+                                                    <a id="calen-com" href="{{ url_for('sesionProveedor') }}">Calendario
+                                                        de
                                                         compras</a>
                                                 </li>
                                                 <li class="menu-item">
-                                                    <a href="{{ url_for('administrador') }}">Administrador</a>
+                                                    <a id="administrador" href="{{ url_for('administrador') }}">Administrador</a>
                                                 </li>
                                                 {% else %}
                                                 <li class="menu-item">
-                                                    <a href="{{ url_for('sesionProveedor') }}">Calendario de
+                                                    <a id="calen-com2" href="{{ url_for('sesionProveedor') }}">Calendario
+                                                        de
                                                         compras</a>
                                                 </li>
                                                 {% endif %}
                                                 {% else %}
                                                 <li class="menu-item">
-                                                    <a href="{{ url_for('proveedores') }}">Proveedores</a>
+                                                    <a id="loginProv"
+                                                       href="{{ url_for('proveedores') }}">Proveedores</a>
                                                 </li>
                                                 <li class="menu-item">
-                                                    <a href="{{ url_for('loginAdministrador') }}">Administrador</a>
+                                                    <a id="loginAdmi" href="{{ url_for('loginAdministrador') }}">Administrador</a>
                                                 </li>
                                                 {% endif %}
                                             </ul>
@@ -426,7 +431,7 @@
 
         </div>
         <div class="content-section">
-            <h2><a class="article-title" href="{{ url_for('LProveedores') }}">Lista de proveedores</a></h2>
+            <h2><a id="listaP" class="article-title" href="{{ url_for('LProveedores') }}">Lista de proveedores</a></h2>
             <div style="overflow:scroll;height:400px;width:100%;">
                 {% for proveedor in proveedores %}
                 <article class="media content-section">
@@ -479,6 +484,7 @@
 <script class="brz-script brz-script-preview-pro" src="../static/assets/7902f318d54a606f57bd1747cbb5ce0f.js"></script>
 <script class="brz-script brz-script-emit">
           jQuery(document).ready(function() {        window.Brizy.emit("init.dom", jQuery(document.body));      });
+
 
 
 
