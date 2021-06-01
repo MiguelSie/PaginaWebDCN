@@ -223,7 +223,7 @@
                     </li>
                     {% else %}
                     <li class="menu-item">
-                        <a class="menu-link" href="{{ url_for('sesionProveedor') }}">Calendario de compras</a>
+                        <a id="calendario-compra" class="menu-link" href="{{ url_for('sesionProveedor') }}">Calendario de compras</a>
                     </li>
                     {% endif %}
                     {% else %}
@@ -237,7 +237,7 @@
                 </ul>
                 {% if current_user.is_authenticated %}
                 <form class="d-flex">
-                    <a class="btn btn-outline-success" href="{{ url_for('cerrarSesion') }}">Cerrar sesion</a>
+                    <a id="cerrar-sesion" class="btn btn-outline-success" href="{{ url_for('cerrarSesion') }}">Cerrar sesion</a>
                 </form>
                 {% endif %}</div></div></div></div></div></div></div></div></div></section>{% with messages = get_flashed_messages(with_categories=true) %}
                 {% if messages %}
