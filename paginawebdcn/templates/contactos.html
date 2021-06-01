@@ -372,38 +372,38 @@
                                         <div>
                                             <ul class="menu">
                                                 <li class="menu-item">
-                                                    <a id="inicio" href="/home">Inicio</a>
+                                                    <a href="/">Inicio</a>
                                                 </li>
                                                 <li class="menu-item">
-                                                    <a id="sedes" href="{{ url_for('sedes') }}">Sedes</a>
+                                                    <a href="{{ url_for('sedes') }}">Sedes</a>
                                                 </li>
                                                 <li class="menu-item">
-                                                    <a id="contacto" href="{{ url_for('contacto') }}">Contacto</a>
+                                                    <a href="{{ url_for('contacto') }}">Contacto</a>
                                                 </li>
                                                 <li class="menu-item">
-                                                    <a id="servicios" href="{{ url_for('servicios') }}">Servicios</a>
+                                                    <a href="{{ url_for('servicios') }}">Servicios</a>
                                                 </li>
                                                 {% if current_user.is_authenticated %}
                                                 {% if current_user == admin %}
                                                 <li class="menu-item">
-                                                    <a id="calen-com" href="{{ url_for('sesionProveedor') }}">Calendario de
+                                                    <a href="{{ url_for('sesionProveedor') }}">Calendario de
                                                         compras</a>
                                                 </li>
                                                 <li class="menu-item">
-                                                    <a id="administrador" href="{{ url_for('administrador') }}">Administrador</a>
+                                                    <a href="{{ url_for('administrador') }}">Administrador</a>
                                                 </li>
                                                 {% else %}
                                                 <li class="menu-item">
-                                                    <a id="calen-com2" href="{{ url_for('sesionProveedor') }}">Calendario de
+                                                    <a href="{{ url_for('sesionProveedor') }}">Calendario de
                                                         compras</a>
                                                 </li>
                                                 {% endif %}
                                                 {% else %}
                                                 <li class="menu-item">
-                                                    <a id="loginProv" href="{{ url_for('proveedores') }}">Proveedores</a>
+                                                    <a href="{{ url_for('proveedores') }}">Proveedores</a>
                                                 </li>
                                                 <li class="menu-item">
-                                                    <a id="loginAdmi" href="{{ url_for('loginAdministrador') }}">Administrador</a>
+                                                    <a href="{{ url_for('loginAdministrador') }}">Administrador</a>
                                                 </li>
                                                 {% endif %}
                                             </ul>
