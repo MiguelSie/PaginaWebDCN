@@ -92,7 +92,7 @@ def loginAdministrador():
             flash(f"Ha ingresado exitosamente ", "success")
             return redirect(url_for("administrador"))
         else:
-            flash(f"El token ingresado no se encuentra registrado", "danger")
+            flash(f"La contraseña ingresada no se encuentra registrada", "danger")
     return render_template("loginAdmi.html", title="Iniciar sesion como administrador", formulario=formulario,
                            admin=admin)
 

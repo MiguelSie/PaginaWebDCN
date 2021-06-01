@@ -1,23 +1,26 @@
 {% extends "original.html" %}
 {% block content %}
 <div class="content-section">
-    <form method="POST" action="">
+    <form class="formulario" method="POST" action="">
         {{ formulario.hidden_tag() }}<!--esto se hace para proteger el sitio contar ciertos ataques-->
         <fieldset class="form-group">
             <legend class=""> Ingreso de administrador</legend>
             <!--Los siguientes son los campos del formulario-->
             <dir class="form-group">
-                {{ formulario.email.label(class="form-control-label") }}
+                {{ formulario.email.label(class="form-control-label", style="text-wrapping: nowrap;
+                white-space:nowrap") }}
 
                 {% if formulario.email.errors %}<!-- Imprime los errores asociados a este campo -->
-                {{ formulario.email(class="form-control form-control-lg is-invalid") }}
+                {{ formulario.email(class="form-control form-control-lg is-invalid", style="text-wrapping: nowrap;
+                white-space:nowrap") }}
                 <div class="invalid-feedback">
                     {% for error in formulario.email.errors %}
                     <span lang="es">{{ error }}</span>
                     {% endfor %}
                 </div>
                 {% else %}
-                {{ formulario.email(class="form-control form-control-lg") }}
+                {{ formulario.email(class="form-control form-control-lg", style="text-wrapping: nowrap;
+                white-space:nowrap") }}
                 {% endif %}
             </dir>
             <dir class="form-group">
