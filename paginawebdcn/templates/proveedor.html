@@ -1,4 +1,4 @@
-{% extends "index.html" %}
+{% extends "original.html" %}
 {% block content %}
 <article class="media content-section">
     <form method="POST" action="">
@@ -51,7 +51,7 @@
         </fieldset>
         <div class="col-sm-12 col-xs-12" style="margin-top: 10px;">
             {{ formularioActu.submit( class="btn btn-outline-info") }}
-            <a id="btn-eliminarProv" class="btn btn-outline-info" href="{{ url_for('eliminarProv',prov_id=proveedorB.id) }}">Eliminar</a>
+            <a class="btn btn-outline-info" href="{{ url_for('eliminarProv',prov_id=proveedorB.id) }}">Eliminar</a>
         </div>
     </form>
     <div class="media-body">
